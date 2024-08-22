@@ -94,8 +94,8 @@ impl Store {
             let tenant = tenant_profile.unwrap_or_else(|| String::from("default value"));
             let tenant_copy = tenant.clone();
             let target = target_url
-            .provision_backend(key_method, pass_key, Some(tenant), recreate)
-            .await?;
+                .provision_backend(key_method, pass_key, Some(tenant), recreate)
+                .await?;
             copy_profile(&self.0, &target, &tenant_copy, &tenant_copy).await?;
             Ok(Self::new(target))
         } else {
